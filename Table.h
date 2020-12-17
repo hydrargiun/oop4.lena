@@ -3,7 +3,6 @@
 #include <map>
 #include <vector>
 #include "Room.h"
-
 namespace oop4 {
     class Table {
     private:
@@ -17,6 +16,8 @@ namespace oop4 {
         Table();
         void Display();
         Table &Add(Room *);
+        Table &Del(Room *);
+
 
 
 };

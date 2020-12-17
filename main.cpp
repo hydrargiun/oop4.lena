@@ -1,17 +1,17 @@
-#include "mainwindow.h"
-#include <QApplication>
 #include <iostream>
 #include "Table.h"
 #include "Lux.h"
-#include "Standart.h"
 #include "Multiseat.h"
 using namespace oop4;
+int main() {
+    Table tab;
 
 
-int main(int argc, char *argv[])
-  {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    return a.exec();
-  }
+    Lux c(1,1);
+    tab = tab.Add(&c);
+   // Multiseat a(3,2,4);
+  //  tab = tab.Add(&a);
+
+    tab.Display();
+
+}

@@ -5,26 +5,20 @@ namespace oop4 {
     class Room {
     private:
         int num;
-        int cost_per_day;
-    protected:
-        std::string type;
-        int date;
-        int time;
-        int people;
         int busy;
+        int cost_per_day;
+        std::string type;
 
-
+    protected:
+        friend std::ostream& operator << (std::ostream& out, const Room&);
+        virtual std::ostream& show(std::ostream&)const = 0;
+        virtual Room& Take(int d, int t, int p) = 0;
+        virtual Room& Checkout(int p) = 0;
     public:
-     Room();
-     Room(int,int);
-     int Get_number() const;
-     friend std::ostream& operator << (std::ostream& out, const Room& );
-     virtual std::ostream& show(std::ostream&)const;
-     virtual Room& Set_date(int d, int t);
-     Room& take(int d, int t);
-     virtual Room& take(int d, int t, int p);
-
-
+         Room &Set_first(int n, int c, const std::string&);
+         Room &Set_busy(int);
+         int Get_busy() const;
+         int Get_number() const ;
     };
 }
 

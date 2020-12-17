@@ -1,57 +1,15 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.17)
+project(oop4_lena)
 
-project(oop4 LANGUAGES CXX)
-
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# QtCreator supports the following variables for Android, which are identical to qmake Android variables.
-# Check http://doc.qt.io/qt-5/deployment-android.html for more information.
-# They need to be set before the find_package(Qt5 ...) call.
-
-#if(ANDROID)
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-#    if (ANDROID_ABI STREQUAL "armeabi-v7a")
-#        set(ANDROID_EXTRA_LIBS
-#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libcrypto.so
-#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libssl.so)
-#    endif()
-#endif()
-
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
-
-if(ANDROID)
-  add_library(oop4 SHARED
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
-  )
-else()
-    add_library(Lux Lux.cpp Lux.h)
-    link_libraries(Lux)
-    add_library(Multiseat Multiseat.cpp Multiseat.h)
-    link_libraries(Multiseat)
-    add_library(Standart Standart.cpp Standart.h)
-    link_libraries(Standart)
-    add_library(Table Table.cpp Table.h)
-    link_libraries(Table)
-    add_library(Room Room.cpp Room.h)
-    link_libraries(Room)
-  add_executable(oop4
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
-  )
-
-endif()
-
-target_link_libraries(oop4 PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+set(CMAKE_CXX_STANDARD 14)
+add_library(Lux Lux.cpp Lux.h)
+link_libraries(Lux)
+add_library(Multiseat Multiseat.cpp Multiseat.h)
+link_libraries(Multiseat)
+add_library(Standart Standart.h Standart.cpp)
+link_libraries(Standart)
+add_library(Table Table.cpp Table.h)
+link_libraries(Table)
+add_library(Room Room.cpp Room.h)
+link_libraries(Room)
+add_executable(oop4_lena main.cpp)

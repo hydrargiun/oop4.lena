@@ -6,11 +6,16 @@
 namespace oop4 {
     class Lux : public Room {
     private:
+        int date;
+        int time;
+        int people;
+
 
     public:
-        Lux();
-        Lux(int, int);
-
+        Lux(int,int);
+        Room& Take(int d, int t, int p) override;
+        Room& Checkout(int p) override;
+        std::ostream &show(std::ostream &out) const override;
     };
 }
 

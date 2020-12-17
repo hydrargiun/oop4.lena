@@ -4,14 +4,7 @@
 namespace oop4 {
 
 
-    Room::Room() = default;
 
-    Room::Room(int number, int cost) : num(number),busy(0), cost_per_day(cost) {
-    }
-
-    int Room::Get_number() const {
-        return this->num;
-    }
 
     std::ostream& operator << (std::ostream& out, const Room& room){
         out << "Room num -> ";
@@ -27,38 +20,28 @@ namespace oop4 {
     }
 
 
-    Room& Room::Set_date(int d, int t) {
-        date = d;
-        time = t;
+
+
+
+    int Room::Get_number() const {
+        return this->num;
+    }
+
+    Room &Room::Set_first(int n, int c, const std::string& t)  {
+        this->num = n;
+        this->cost_per_day = c;
+        this->busy = 0;
+        this->type = t;
+        return *this;
+    }
+    Room &Room::Set_busy(int b)  {
+        this->busy = 0;
         return *this;
     }
 
-    Room &Room::take(int d, int t) {
-        this->Set_date(d,t);
-        busy = 1;
-        people = 1;
-        return *this;
+    int Room::Get_busy() const{
+        return this->busy;
     }
-
-    Room &Room::take(int d, int t, int p) {
-        this->people = p;
-        this->Set_date(t,d);
-        this->busy = 1;
-        return *this;
-
-    }
-
-    std::ostream &Room::show(std::ostream &out) const {
-
-            out << "Amount of people ";
-            out << this->people <<"\n";
-            (busy == 1)?(out << "busy from "<<date<<"\n"<<"busy for "<<time<<"\n"):(out <<"not busy");
-            return out;
-
-
-    }
-
-
 
 
 }
