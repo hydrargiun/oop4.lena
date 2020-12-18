@@ -10,13 +10,18 @@ namespace oop4 {
         public:
             std::map<int,Room*> all;
             std::map<int, Room*> free;
+
         };
         TMap map_all;
     public:
         Table();
+        Room* Find_element(int key);
+        std::map<int, Room *>::iterator Find_it(int);
         void Display();
         Table &Add(Room *);
-        Table &Del(Room *);
+        void Show_element(int k);
+        Table &Del(int);
+        void QShow();
 
 
 

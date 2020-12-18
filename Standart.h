@@ -6,7 +6,6 @@ namespace oop4 {
     class Standart : public Room {
 
     private:
-       int people;
        int date;
        int time;
     public:
@@ -15,6 +14,7 @@ namespace oop4 {
         Room & Take(int d, int t, int p) override;
         Room & Checkout(int p) override;
         std::ostream & show(std::ostream &) const override;
+
     };
 }
 

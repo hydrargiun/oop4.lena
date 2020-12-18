@@ -11,7 +11,7 @@ namespace oop4 {
         out <<" "<< room.num<<"\n";
         out << "Room type -> ";
         out <<" "<< room.type<<"\n";
-        (room.busy == 1)?(out << "busy\n"):(out << "free\n");
+        (room.busy == 1)?(out << "Room is -> busy\n"):(out << "Room is -> free\n");
         out << "Room cost -> ";
         out <<" "<<room.cost_per_day<<"\n";
         room.show(out);
@@ -41,6 +41,19 @@ namespace oop4 {
 
     int Room::Get_busy() const{
         return this->busy;
+    }
+
+    int Room::Get_people() const {
+        return this->people;
+    }
+
+    Room &Room::Set_people(int p) {
+        this->people = p;
+        return *this;
+    }
+
+    std::string Room::Get_type() {
+        return this->type;
     }
 
 

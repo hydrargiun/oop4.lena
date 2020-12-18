@@ -14,13 +14,13 @@ namespace oop4 {
         humans hum[4];
         int places;
         int free_places;
-        int people;
 
     public:
         Multiseat();
         Multiseat(int, int, int);
         Room& Take(int d, int t, int p) override;
         Room & Checkout(int p) override;
+        std::ostream & show(std::ostream &) const override ;
     };
 }
 

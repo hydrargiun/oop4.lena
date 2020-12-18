@@ -8,7 +8,6 @@ namespace oop4 {
     private:
         int date;
         int time;
-        int people;
 
 
     public:
@@ -16,6 +15,7 @@ namespace oop4 {
         Room& Take(int d, int t, int p) override;
         Room& Checkout(int p) override;
         std::ostream &show(std::ostream &out) const override;
+
     };
 }
 
