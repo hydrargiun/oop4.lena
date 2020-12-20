@@ -56,5 +56,9 @@ namespace oop4 {
         return this->type;
     }
 
+    int Room::Get_cost() const {
+        return this->cost_per_day;
+    }
+
 
 }

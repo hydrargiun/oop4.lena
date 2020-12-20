@@ -39,7 +39,9 @@ namespace oop4{
         return *this;
     }
 
-
+    int Lux::Cost(int p) {
+        return (this->Get_people() * (this->Get_cost() * this->time));
+    }
 
 
 }

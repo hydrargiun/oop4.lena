@@ -15,7 +15,7 @@ namespace oop4 {
         Room& Take(int d, int t, int p) override;
         Room& Checkout(int p) override;
         std::ostream &show(std::ostream &out) const override;
-
+        int Cost(int p) override;
     };
 }
 

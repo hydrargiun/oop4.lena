@@ -7,7 +7,7 @@
 #include "Multiseat.h"
 
 namespace oop4{
-    Table* (*fptr[])(Table *) = {NULL, D_Add, D_Del, D_Show, D_Find, D_QShow, D_Take, D_Checkout};
+    Table* (*fptr[])(Table *) = {NULL, D_Add, D_Del, D_Show, D_Find, D_QShow, D_Take, D_Checkout, D_Cost};
     Table table;
     void dialog() {
         while (true) {
@@ -20,7 +20,7 @@ namespace oop4{
             std::cout << "5. Вывод таблицы типа номер-тип" << std::endl;
             std::cout << "6. Заселить" << std::endl;
             std::cout << "7. Выселить " << std::endl;
-           // std::cout << "8.  " << std::endl;
+            std::cout << "8. Получить цену за проживание" << std::endl;
            // std::cout << "9.  " << std::endl;
           //  std::cout << "10. " << std::endl;
           //  std::cout << "11. " << std::endl;
@@ -88,20 +88,40 @@ namespace oop4{
         tab->QShow();
         return tab;
     }
+    Table* D_Cost(Table* tab){
+        std::cout <<"Введите ключ ";
+        int key;
+        std::cin >> key;
+        std::map<int, Room *>::iterator it;
+        it = tab->Find_it(key);
+        if(it->second->Get_type()!= "Multiseat" ) {
+            std::cout <<"Цена за номер -> " <<it->second->Cost(it->second->Get_people());
+        } else {
+            std::cout << "\nВведите id человека\n";
+            int id;
+            std::cin >> id;
+            std::cout << "Цена за номер для человека с id " << id << " -> " << it->second->Cost(id);
+        }
+        return tab;
+    }
     Table* D_Take(Table* tab){
         std::cout <<"Введите ключ ";
         int key;
         std::cin >> key;
-        int date;
-        int time;
-        int people;
-        std::cout<<"Date of register-> ";
-        std::cin >> date;
-        std::cout<<"Time-> ";
-        std::cin >> time;
-        std::cout<<"People-> ";
-        std::cin >> people;
-        tab->Find_element(key)->Take(date,time,people);
+        if(tab->Find_element(key)->Get_busy() != 0) {
+            int date;
+            int time;
+            int people;
+            std::cout << "Date of register-> ";
+            std::cin >> date;
+            std::cout << "Time-> ";
+            std::cin >> time;
+            std::cout << "People-> ";
+            std::cin >> people;
+            tab->Find_element(key)->Take(date, time, people);
+        }
+        else
+            std::cout << "\nНомер занят\n";
         return tab;
     }
     Table* D_Checkout(Table* tab) {
@@ -112,18 +132,21 @@ namespace oop4{
         it = tab->Find_it(key);
         if (it->second->Get_type() != "Multiseat") {
             it->second->Checkout(it->second->Get_people());
+            std::cout <<"Цена за номер -> " <<it->second->Cost(it->second->Get_people());
         } else {
             int p;
             std::cout<<"Введите индeкс человека ";
             std::cin >> p;
 
             try {
+                std::cout << "Цена за номер для человека с id " << p << " -> " << it->second->Cost(p);
                 it->second->Checkout(p);
-            }
+                            }
             catch (std::exception &ex) {
                 std::cout << "Exception detected: " << ex.what() << std::endl;
             }
         }
+
         return tab;
     }
 }

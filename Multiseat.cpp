@@ -67,6 +67,9 @@ namespace oop4 {
 
     }
 
+    int Multiseat::Cost(int p) {
+        return (this->Get_cost() * this->hum[p-1].time);
+    }
 
 
     Multiseat::Multiseat() = default;

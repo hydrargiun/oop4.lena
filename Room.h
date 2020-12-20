@@ -12,8 +12,7 @@ namespace oop4 {
 
     protected:
         virtual std::ostream& show(std::ostream&)const = 0;
-      //  virtual Room& Take(int d, int t, int p) = 0;
-        //virtual Room& Checkout(int p) = 0;
+        //virtual Room& Take(int d, int t, int p) = 0;
     public:
          friend std::ostream& operator << (std::ostream& out, const Room&);
          Room &Set_first(int n, int c, const std::string&);
@@ -22,9 +21,12 @@ namespace oop4 {
          int Get_busy() const;
          int Get_number() const ;
          int Get_people() const;
+         int Get_cost() const;
          std::string Get_type();
          virtual Room& Take(int d, int t, int p) = 0;
          virtual Room& Checkout(int p) = 0;
+         virtual int Cost(int p) = 0;
+
          
 
     };

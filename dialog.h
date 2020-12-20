@@ -13,5 +13,7 @@ namespace oop4 {
     Table* D_QShow(Table *);
     Table* D_Take(Table *);
     Table* D_Checkout(Table *);
+    Table* D_Cost(Table *);
+
 }
 #endif //MAIN_CPP_DIALOG_H

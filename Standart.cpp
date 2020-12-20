@@ -32,6 +32,9 @@ namespace oop4{
     }
 
     Room &Standart::Checkout(int p) {
+              if(p != 1){
+                  throw std::invalid_argument("not 1");
+              }
        this->Set_busy(0);
        this->Set_people(0);
        date = 0;
@@ -39,7 +42,9 @@ namespace oop4{
         return *this;
     }
 
-
+    int Standart::Cost(int p) {
+        return (this->Get_people() * (this->Get_cost() * this->time));
+    }
 
 
     Standart::Standart() = default;
